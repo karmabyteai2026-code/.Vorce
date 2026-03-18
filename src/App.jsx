@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 // ─── TOKENS ───────────────────────────────────────────────────────────────────
 var BG = "#080810";
@@ -1308,6 +1309,7 @@ export default function App() {
       {screen === "dashboard" && <Dash userName={userName} plan={plan} onUpgrade={function(pl) { setPending(pl); go("payment"); }} onExit={function() { go("landing"); }} toast={toaster.show} />}
       {!cookie && screen === "landing" && <Cookie onAccept={function() { setCookie(true); }} />}
       {toaster.toast && <Toast key={toaster.toast.id} msg={toaster.toast.msg} type={toaster.toast.type} onDone={toaster.hide} />}
+      <Analytics />
     </div>
   );
 }
